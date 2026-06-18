@@ -8,3 +8,6 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '© OpenStreetMap contributors'
 }).addTo(map);
 
+fetch('https://eonet.gsfc.nasa.gov/api/v3/events?status=open')
+.then(response => response.json())
+.then(data => console.log(data.events));
