@@ -1,6 +1,7 @@
 # WorldDIsasters
 A website that shows you the map of all the ongoing and latest natural disasters like wildfires, storms, volcanoes ecc..  (Web Based)
-
+![example1](assets/example1.png)
+![example2](assets/example2.gif)
 # how does it work? 
 
 ### NASA's API
