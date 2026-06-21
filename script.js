@@ -1,7 +1,8 @@
 const mapGrid = document.getElementById("mapGrid");
 var map = L.map('mapGrid', {
     center: [50, 0],
-    zoom: 4
+    zoom: 4,
+    minZoom: 2 // this is to make sure u cant fully zoom out and "break" the map
 });
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
