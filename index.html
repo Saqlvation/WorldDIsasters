@@ -50,11 +50,28 @@
             width: 32px;
             height: 32px;
         }
+/* THIS IS THE LOADING GIF CSS TO MAKE IT COVER THE ENTIRE PAGE WHILE IT FETCHES FROM API */
+        #loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+}
     </style>
 </head>
 
 
 <body>
+<div id="loading">
+    <img src="assets/loading.gif" id="loadingGif">
+</div>
     <div id="mainTexts">
     <h1>Current Shown World Events:</h1>
     <h1 id="numberDisasters">loading . . . </h1> <!-- since it takes a few seconds to load the API i change the text to loading -->

@@ -35,10 +35,12 @@ let rainStormIcon = L.icon({
 
 const numberDisasters = document.getElementById("numberDisasters");
 const sidebar = document.getElementById("sidebar");
+const loading = document.getElementById("loading");
 fetch('https://eonet.gsfc.nasa.gov/api/v3/events?status=open&limit=100') // this is set to "limit=100" because it's tracking a lot of unclosed events, which would lag the whole page
 .then(response => response.json())
 .then(data => {
     numberDisasters.textContent = data.events.length;
+    loading.style.display = "none";
     data.events.forEach(event => {
     // has to be const so it does not get rewritten
     const lon = event.geometry[0].coordinates[0] // this is the longitude
