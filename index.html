@@ -13,9 +13,17 @@
     <style>
         #mapGrid {
             height: 800px;
+            width: 80%;
         }
         #mainTexts {
             text-align: center;
+        }
+        #container {
+            display: flex;
+        }
+        #sidebar {
+            width: 20%;
+            
         }
     </style>
 </head>
@@ -26,8 +34,9 @@
     <h1>Current World Events:</h1>
     <h1 id="numberDisasters">loading . . . </h1> <!-- since it takes a few seconds to load the API i change the text to loading -->
     </div>
-<div id="mapGrid">
-
+<div id="container">
+    <div id="mapGrid"></div>
+    <div id="sidebar"></div>
 
 </div>
 
