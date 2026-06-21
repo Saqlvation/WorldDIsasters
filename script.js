@@ -1,7 +1,7 @@
 const mapGrid = document.getElementById("mapGrid");
 var map = L.map('mapGrid', {
     center: [50, 0],
-    zoom: 4,
+    zoom: 2.5,
     minZoom: 2 // this is to make sure u cant fully zoom out and "break" the map
 });
 
@@ -28,9 +28,14 @@ let defaultIcon = L.icon({
     iconUrl: 'assets/default.png',
     iconSize: [32, 32],
 });
+let rainStormIcon = L.icon({
+    iconUrl: 'assets/rainstorm.png',
+    iconSize: [32, 32],
+});
+
 const numberDisasters = document.getElementById("numberDisasters");
 const sidebar = document.getElementById("sidebar");
-fetch('https://eonet.gsfc.nasa.gov/api/v3/events?status=open&limit=100') // this is set to "limit=30" because it's tracking a lot of unclosed events, which would lag the whole page
+fetch('https://eonet.gsfc.nasa.gov/api/v3/events?status=open&limit=100') // this is set to "limit=100" because it's tracking a lot of unclosed events, which would lag the whole page
 .then(response => response.json())
 .then(data => {
     numberDisasters.textContent = data.events.length;
@@ -46,6 +51,8 @@ if (event.categories[0].title === "Wildfires") {
     icon = volcanoIcon;
 } else if (event.categories[0].title === "Sea and Lake Ice") {
     icon = iceIcon;
+}else if(event.categories[0].title === "Severe Storms") { 
+    icon = rainStormIcon;
 } else {
     icon = defaultIcon;
 }
@@ -62,8 +69,8 @@ if (event.categories[0].title === "Wildfires") {
     img.src = icon.options.iconUrl;
     item.appendChild(img);
     sidebar.appendChild(item); 
-    item.addEventListener('click', function(){ 
-        map.flyTo([lat, lon], 10);
+    item.addEventListener('click', function(){ // checks for clicks and it bring you to the place u clicked
+        map.flyTo([lat, lon], 15);
     })
 
     });
