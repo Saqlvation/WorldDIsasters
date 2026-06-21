@@ -5,8 +5,8 @@ var map = L.map('mapGrid', {
     minZoom: 2 // this is to make sure u cant fully zoom out and "break" the map
 });
 
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '© OpenStreetMap contributors'
+L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+    attribution: '© OpenStreetMap contributors © CARTO'
 }).addTo(map);
 
 let lat = 0;
@@ -35,8 +35,9 @@ fetch('https://eonet.gsfc.nasa.gov/api/v3/events?status=open&limit=100') // this
 .then(data => {
     numberDisasters.textContent = data.events.length;
     data.events.forEach(event => {
-    lon = event.geometry[0].coordinates[0] // this is the longitude
-    lat = event.geometry[0].coordinates[1] // this is the latitude
+    // has to be const so it does not get rewritten
+    const lon = event.geometry[0].coordinates[0] // this is the longitude
+    const lat = event.geometry[0].coordinates[1] // this is the latitude
     // adds a simple marker ( like the google maps one..) (with marker addto) while bindpopup is what happens when you click on it it will show you all the descriptions
 let icon;
 if (event.categories[0].title === "Wildfires") {
@@ -54,8 +55,16 @@ if (event.categories[0].title === "Wildfires") {
     <a href="${event.link}">More info</a>
 `).addTo(map); 
     let item = document.createElement('div');
+    let img = document.createElement('img');
     item.textContent = event.title;
-    sidebar.appendChild(item);
+    img.classList.add('img') // to edit its style
+    item.classList.add('item'); // to edit its style with .item
+    img.src = icon.options.iconUrl;
+    item.appendChild(img);
+    sidebar.appendChild(item); 
+    item.addEventListener('click', function(){ 
+        map.flyTo([lat, lon], 10);
+    })
 
     });
     

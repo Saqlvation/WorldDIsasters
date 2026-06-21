@@ -11,6 +11,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css">
     
     <style>
+
+        body {
+            background-color: #1a1a1a;
+            color: #ffffff;
+            margin: 0;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
         #mapGrid {
             height: 800px;
             width: 80%;
@@ -25,6 +32,23 @@
             width: 20%;
             height: 800px;
             overflow-y: scroll; /* controls what happens when the content is taller than its container making it scrollable instead of making the whole page scrollable*/
+            background-color: #111111;
+        }
+        .item {
+            padding: 10px;
+            cursor: pointer;
+            /* start of rules to make the img appear in the same line as the text */
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .item:hover{
+            background-color: #706a6a; /* when u hover over it it changes the background */
+        }
+
+        .img {
+            width: 32px;
+            height: 32px;
         }
     </style>
 </head>
