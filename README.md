@@ -10,7 +10,8 @@ for this project i used NASA' seonet API fetched from [eonet](https://eonet.gsfc
 the map was built using leaflet.js [Leaflet](https://leafletjs.com/) its a open source mapping library that gives us the map easily and it has it's own methods, the images were uploaded by me and to make everything happen i used leaflet methods
 
 ### how do i try it?
-Either download the whole project from here or just try it on vercel
+to run this locally simply download the file from github or clone it using "git clone (link)" if you have git bash installed . then once everything is installed on your computer simply open the "index.html" file, you do not need to install anything as this can simply run on ur browser.(remember to extract the zip if you downloaded by zip)
+otherwise you can try it here
 [TRY HERE](https://world-d-isasters.vercel.app/)
 
 
